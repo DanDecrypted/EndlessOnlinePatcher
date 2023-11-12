@@ -23,7 +23,7 @@ jobs:
           mkdir ../dist
           dotnet build --configuration Release --no-restore /p:EnableWindowsTargeting=true
           mkdir ../dist/self-contained
-          dotnet publish -c Release ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
           mkdir ../dist/framework-dependant
-          dotnet publish -c Release ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
   
