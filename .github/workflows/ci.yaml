@@ -20,9 +20,16 @@ jobs:
       - name: Build & Publish Version ${{ github.run_number }}
         run: | 
           cd src/EndlessOnlinePatcher.Desktop
-          mkdir ../dist
           dotnet build --configuration Release --no-restore /p:EnableWindowsTargeting=true
-          mkdir ../dist/self-contained
           dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
-          mkdir ../dist/framework-dependant
           dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
+      - name: Upload Self Contained
+        uses: actions/upload-artifact@v3
+        with:
+          name: Endless.Online.Patcher.Desktop.Self.Contained.0.0.0.${{ github.run_number }}
+          path: ../dist/self-contained/EndlessOnlinePatcher.Desktop.exe
+      - name: Upload Framework Dependant
+        uses: actions/upload-artifact@v3
+        with:
+          name: Endless.Online.Patcher.Desktop.Framework.Dependant.0.0.0.${{ github.run_number }}
+          path: ../dist/framework-dependant/EndlessOnlinePatcher.Desktop.exe
