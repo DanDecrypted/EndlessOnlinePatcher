@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndlessOnlinePatcher.Consol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndlessOnlinePatcher.Desktop", "EndlessOnlinePatcher.Desktop\EndlessOnlinePatcher.Desktop.csproj", "{74671C17-2B5A-4E0D-9C38-74F790D659D5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EndlessOnlinePatcherSetup", "EndlessOnlinePatcherSetup\EndlessOnlinePatcherSetup.vdproj", "{1D9DA1F0-1366-46A9-8C90-720B7DC7303F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
