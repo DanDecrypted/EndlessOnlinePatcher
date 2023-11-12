@@ -27,9 +27,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Endless.Online.Patcher.Desktop.Self.Contained.0.0.0.${{ github.run_number }}
-          path: ../dist/self-contained/EndlessOnlinePatcher.Desktop.exe
+          path: src/dist/self-contained/EndlessOnlinePatcher.Desktop.exe
       - name: Upload Framework Dependant
         uses: actions/upload-artifact@v3
         with:
           name: Endless.Online.Patcher.Desktop.Framework.Dependant.0.0.0.${{ github.run_number }}
-          path: ../dist/framework-dependant/EndlessOnlinePatcher.Desktop.exe
+          path: src/dist/framework-dependant/EndlessOnlinePatcher.Desktop.exe
