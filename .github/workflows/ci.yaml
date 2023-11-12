@@ -21,8 +21,8 @@ jobs:
         run: | 
           cd src/EndlessOnlinePatcher.Desktop
           dotnet build --configuration Release --no-restore /p:EnableWindowsTargeting=true
-          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
-          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true /p:PublishSingleFile=true
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj -c Release -o ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }} /p:EnableWindowsTargeting=true /p:PublishSingleFile=true
       - name: Upload Self Contained
         uses: actions/upload-artifact@v3
         with:
