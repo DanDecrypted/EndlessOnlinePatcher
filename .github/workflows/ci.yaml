@@ -1,0 +1,26 @@
+name: Build
+run-name: Build and Publish
+on:
+  push: 
+    branches:
+      - main
+      - 'feature/**'
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with: 
+          dotnet-version: 7.x
+      - name: Install dependencies
+        run: dotnet restore src/EndlessOnlinePatcher.Desktop/EndlessOnlinePatcher.Desktop.csproj
+      - name: Build & Publish Version ${{ github.run_number }}
+        run: | 
+          cd src/EndlessOnlinePatcher.Desktop
+          dotnet build --configuration Release --no-restore
+          dotnet publish -c Release ../dist/self-contained -r win-x64 --self-contained true /p:Version=0.0.0.${{ github.run_number }}
+          dotnet publish -c Release ../dist/framework-dependant -r win-x64 --self-contained false /p:Version=0.0.0.${{ github.run_number }}
+  
