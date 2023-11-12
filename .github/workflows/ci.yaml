@@ -16,13 +16,13 @@ jobs:
         with: 
           dotnet-version: 7.x
       - name: Install dependencies
-        run: dotnet restore src/EndlessOnlinePatcher.Desktop/EndlessOnlinePatcher.Desktop.csproj /p:EnableWindowsTargeting=true -f net7.0-windows
+        run: dotnet restore src/EndlessOnlinePatcher.Desktop/EndlessOnlinePatcher.Desktop.csproj /p:EnableWindowsTargeting=true -f net7.0
       - name: Build & Publish Version ${{ github.run_number }}
         run: | 
           cd src/EndlessOnlinePatcher.Desktop
           dotnet build --configuration Release --no-restore /p:EnableWindowsTargeting=true /p:Version=0.0.0.${{ github.run_number }}
-          dotnet publish EndlessOnlinePatcher.Desktop.csproj --no-build -c Release -o ../dist/self-contained -r win-x64 --self-contained true /p:EnableWindowsTargeting=true /p:PublishSingleFile=true -f net7.0-windows
-          dotnet publish EndlessOnlinePatcher.Desktop.csproj --no-build -c Release -o ../dist/framework-dependant -r win-x64 --self-contained false  /p:EnableWindowsTargeting=true /p:PublishSingleFile=true -f net7.0-windows
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj --no-build -c Release -o ../dist/self-contained -r win-x64 --self-contained true /p:EnableWindowsTargeting=true /p:PublishSingleFile=true -f net7.0
+          dotnet publish EndlessOnlinePatcher.Desktop.csproj --no-build -c Release -o ../dist/framework-dependant -r win-x64 --self-contained false  /p:EnableWindowsTargeting=true /p:PublishSingleFile=true -f net7.0
       - name: Upload Self Contained
         uses: actions/upload-artifact@v3
         with:
