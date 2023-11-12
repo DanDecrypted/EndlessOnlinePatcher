@@ -16,7 +16,7 @@ jobs:
         with: 
           dotnet-version: 7.x
       - name: Install dependencies
-        run: dotnet restore src/EndlessOnlinePatcher.Desktop/EndlessOnlinePatcher.Desktop.csproj /p:EnableWindowsTargeting=true -f net7.0
+        run: dotnet restore src/EndlessOnlinePatcher.Desktop/EndlessOnlinePatcher.Desktop.csproj /p:EnableWindowsTargeting=true 
       - name: Build & Publish Version ${{ github.run_number }}
         run: | 
           cd src/EndlessOnlinePatcher.Desktop
